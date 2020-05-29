@@ -55,6 +55,7 @@ IF(DEFINED BUILD_UNIT_TESTS)
     we suggest that you delete your build folder and make a new one.")
   SET(BUILD_TESTING ${BUILD_UNIT_TESTS})
 ENDIF(DEFINED BUILD_UNIT_TESTS)
+SET(BUILD_TESTING OFF)
 
 OPTION(BUILD_ADVANCED_TESTING "Build the advanced tests (multiprecision, etc.) of Pinocchio" OFF)
 
