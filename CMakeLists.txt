@@ -11,6 +11,7 @@ SET(PROJECT_URL "http://github.com/stack-of-tasks/pinocchio")
 SET(PROJECT_CUSTOM_HEADER_EXTENSION "hpp")
 SET(PROJECT_USE_CMAKE_EXPORT TRUE)
 SET(PROJECT_USE_KEYWORD_LINK_LIBRARIES TRUE)
+SET(CMAKE_CXX_COMPILER /usr/bin/clang++-8)
 
 # Disable -Werror on Unix for now.
 SET(CXX_DISABLE_WERROR True)
@@ -45,7 +46,7 @@ ENDIF(WIN32)
 # --- OPTIONS ----------------------------------------
 OPTION(BUILD_BENCHMARK "Build the benchmarks" OFF)
 OPTION(BUILD_UTILS "Build the utils" OFF)
-OPTION(BUILD_PYTHON_INTERFACE "Build the Python binding" ON)
+OPTION(BUILD_PYTHON_INTERFACE "Build the Python binding" OFF)
 OPTION(BUILD_WITH_COMMIT_VERSION "Build libraries by setting specific commit version" OFF)
 
 IF(DEFINED BUILD_UNIT_TESTS)
@@ -60,7 +61,7 @@ OPTION(BUILD_ADVANCED_TESTING "Build the advanced tests (multiprecision, etc.) o
 # --- OPTIONAL DEPENDENCIES -------------------------
 OPTION(BUILD_WITH_URDF_SUPPORT "Build the library with the URDF format support" ON)
 OPTION(BUILD_WITH_COLLISION_SUPPORT "Build the library with the collision support (required HPP-FCL)" ON)
-OPTION(BUILD_WITH_AUTODIFF_SUPPORT "Build the library with the automatic differentiation support (via CppAD)" OFF)
+OPTION(BUILD_WITH_AUTODIFF_SUPPORT "Build the library with the automatic differentiation support (via CppAD)" ON)
 OPTION(BUILD_WITH_CASADI_SUPPORT "Build the library with the support of CASADI" OFF)
 OPTION(BUILD_WITH_CODEGEN_SUPPORT "Build the library with the support of code generation (via CppADCodeGen)" ON)
 
