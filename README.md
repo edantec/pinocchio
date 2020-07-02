@@ -25,7 +25,15 @@ It is built upon Eigen for linear algebra and FCL for collision detection. **Pin
 
 If you want to learn more on **Pinocchio** internal behaviors and main features, we invite you to read the related [paper](https://hal-laas.archives-ouvertes.fr/hal-01866228).
 
-## Pinocchio features
+If you want to directly dive into **Pinocchio**, only one single line is sufficient (assuming you have Conda):
+
+<p align="center">
+conda install pinocchio -c conda-forge
+</p>
+
+**NEWS**: We are **hiring**! We are looking for a talented C++/Python software developer to enhance and promote Pinocchio inside the robotics community and beyond. Please contact @jcarpent for further details.
+
+## Pinocchio main features
 
 **Pinocchio** is fast:
 
@@ -49,7 +57,7 @@ If you want to learn more on **Pinocchio** internal behaviors and main features,
 **Pinocchio** is extensible.  
 **Pinocchio** is multi-thread friendly.  
 **Pinocchio** is reliable and extensively tested (unit-tests, simulations and real robotics applications).  
-**Pinocchio** is supported on Mac OS X and many Linux distributions ([see build status here](http://robotpkg.openrobots.org/rbulk/robotpkg/math/pinocchio/index.html)).
+**Pinocchio** is supported and tested on Windows, Mac OS X, Unix and Linux ([see build status here](http://robotpkg.openrobots.org/rbulk/robotpkg/math/pinocchio/index.html)).
 
 ## Performances
 
@@ -140,6 +148,7 @@ The following people have been involved in the development of **Pinocchio** and 
 - [Igor Kalevatykh](https://github.com/ikalevatykh) (INRIA): Panda3d viewer support
 - [Matthieu Vigne](https://github.com/matthieuvigne) (Wandercraft): MeshCat viewer support
 - [Robin Strudel](https://www.di.ens.fr/robin.strudel/) (INRIA): features extension
+- [François Keith](https://scholar.google.fr/citations?user=cxSxXiQAAAAJ&hl=en) (CEA): Windows support
 
 If you have taken part to the development of **Pinocchio**, feel free to add your name and contribution in this list.
 
