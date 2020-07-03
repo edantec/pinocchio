@@ -16,6 +16,7 @@ SET(CMAKE_CXX_COMPILER /usr/bin/clang++-8)
 # Disable -Werror on Unix for now.
 SET(CXX_DISABLE_WERROR True)
 SET(CMAKE_VERBOSE_MAKEFILE True)
+SET(Boost_USE_STATIC_LIBS ON)
 
 # Check if the submodule cmake have been initialized
 IF(NOT EXISTS "${CMAKE_SOURCE_DIR}/cmake/base.cmake")
