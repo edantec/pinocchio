@@ -11,6 +11,7 @@ SET(PROJECT_URL "http://github.com/stack-of-tasks/pinocchio")
 SET(PROJECT_CUSTOM_HEADER_EXTENSION "hpp")
 SET(PROJECT_USE_CMAKE_EXPORT TRUE)
 SET(PROJECT_USE_KEYWORD_LINK_LIBRARIES TRUE)
+SET(CMAKE_CXX_COMPILER /usr/bin/clang++-8)
 
 # Disable -Werror on Unix for now.
 SET(CXX_DISABLE_WERROR True)
@@ -54,6 +55,7 @@ IF(DEFINED BUILD_UNIT_TESTS)
     we suggest that you delete your build folder and make a new one.")
   SET(BUILD_TESTING ${BUILD_UNIT_TESTS})
 ENDIF(DEFINED BUILD_UNIT_TESTS)
+SET(BUILD_TESTING OFF)
 
 OPTION(BUILD_ADVANCED_TESTING "Build the advanced tests (multiprecision, etc.) of Pinocchio" OFF)
 
