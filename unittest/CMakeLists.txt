@@ -32,9 +32,13 @@ MACRO(ADD_PINOCCHIO_UNIT_TEST NAME)
   TARGET_LINK_LIBRARIES(${TEST_NAME} PRIVATE ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 ENDMACRO(ADD_PINOCCHIO_UNIT_TEST)
 
-# --- RULES -------------------------------------------------------------------
-# --- RULES -------------------------------------------------------------------
-# --- RULES -------------------------------------------------------------------
+MACRO(ADD_OPTIONAL_COMPILE_DEPENDENCY PKG_CONFIG_STRING)
+  _GET_PKG_CONFIG_DEBUG_STRING("${PKG_CONFIG_STRING}" ${ARGN})
+  ADD_DEPENDENCY(0 1 ${PKG_CONFIG_STRING} "${PKG_CONFIG_DEBUG_STRING}")
+ENDMACRO()
+
+# Find Boost.UnitTestFramework
+FIND_PACKAGE(Boost COMPONENTS unit_test_framework)
 
 # Math components
 ADD_PINOCCHIO_UNIT_TEST(eigen-basic-op)
@@ -114,6 +118,7 @@ ADD_PINOCCHIO_UNIT_TEST(visitor)
 ADD_PINOCCHIO_UNIT_TEST(algo-check)
 
 ADD_PINOCCHIO_UNIT_TEST(liegroups)
+ADD_PINOCCHIO_UNIT_TEST(cartesian-product-liegroups)
 ADD_PINOCCHIO_UNIT_TEST(regressor)
 ADD_PINOCCHIO_UNIT_TEST(version)
 ADD_PINOCCHIO_UNIT_TEST(copy)
@@ -123,6 +128,7 @@ ADD_TEST_CFLAGS(serialization "-DTEST_SERIALIZATION_FOLDER=\\\\\"${CMAKE_CURRENT
 
 # Derivatives algo
 ADD_PINOCCHIO_UNIT_TEST(kinematics-derivatives)
+ADD_PINOCCHIO_UNIT_TEST(frames-derivatives)
 ADD_PINOCCHIO_UNIT_TEST(rnea-derivatives)
 ADD_PINOCCHIO_UNIT_TEST(aba-derivatives)
 ADD_PINOCCHIO_UNIT_TEST(centroidal-derivatives)
@@ -133,6 +139,16 @@ ADD_PINOCCHIO_UNIT_TEST(contact-dynamics-derivatives)
 IF(BUILD_ADVANCED_TESTING)
   ADD_PINOCCHIO_UNIT_TEST(multiprecision)
   SET_PROPERTY(TARGET test-cpp-multiprecision PROPERTY CXX_STANDARD 11)
+
+  ADD_OPTIONAL_COMPILE_DEPENDENCY(gmp)
+  ADD_OPTIONAL_COMPILE_DEPENDENCY(mpfr)
+
+  IF(MPFR_FOUND)
+    ADD_PINOCCHIO_UNIT_TEST(multiprecision-mpfr)
+    PKG_CONFIG_USE_DEPENDENCY(test-cpp-multiprecision-mpfr gmp)
+    PKG_CONFIG_USE_DEPENDENCY(test-cpp-multiprecision-mpfr mpfr)
+    SET_PROPERTY(TARGET test-cpp-multiprecision-mpfr PROPERTY CXX_STANDARD 11)
+  ENDIF(MPFR_FOUND)
 ENDIF(BUILD_ADVANCED_TESTING)
 
 # Automatic differentiation
